@@ -1,0 +1,28 @@
+class Solution {
+public:
+   bool kokospeed(vector<int>& piles,int h,int k){
+    long long int hours = 0;
+    for(int i=0; i<piles.size(); i++){
+        hours += ceil(piles[i]/(double)k);
+    }
+    return hours <= h;
+   }
+    
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int s =1;
+        int e = *max_element(piles.begin(),piles.end());
+        int ans = -1;
+
+        while(s<=e){
+            int mid = (s+e)/2;
+            int k = mid;
+            if(kokospeed(piles,h,k)){
+                ans = k;
+                e = mid -1;
+            }else{
+                s = mid+1;
+            }
+        }
+        return ans;
+    }
+};
