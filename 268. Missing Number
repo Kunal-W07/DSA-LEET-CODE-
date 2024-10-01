@@ -1,0 +1,27 @@
+int missingNumber(vector<int>& nums) {
+
+        //using binarysearch
+        sort(nums.begin(),nums.end());
+        int n = nums.size();
+        int s = 0;
+        int e = n-1;
+        int ans = -1;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            int diff = nums[mid] - mid;
+            // if missing element them move leftside
+            if(diff > 0){
+                ans = mid;
+                e = mid-1;
+            }
+            // if element is right our position then move right side
+            else{
+                s = mid+1;
+            }
+        }
+        if(ans == -1){
+            return n;
+        }else{
+            return ans;
+        }
+    }
