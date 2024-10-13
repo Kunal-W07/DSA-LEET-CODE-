@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string toLowerCase(string s) {
+
+    for(int i=0; i<s.length(); i++){
+    char ch = s[i];
+       if(ch >='A' && ch<='Z'){
+            ch = ch - 'A' + 'a';
+            s[i] = ch;
+        }
+    }
+    return s;
+
+    //     for(char &ch : s){
+           
+    //         if(ch >='A' && ch<='Z'){
+    //             ch = ch - 'A' + 'a';
+                
+    //         }
+    //     }
+    //     return s;
+        
+     }
+};
