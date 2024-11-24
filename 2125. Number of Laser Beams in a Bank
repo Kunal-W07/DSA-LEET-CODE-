@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int n = bank.size();
+        int result = 0;
+        int previous = 0;
+
+    //    loop for itrete on each row or column
+        for(int i=0; i<n; i++){
+            int currentcount = 0;
+            for(int j=0; j<bank[i].size(); j++){
+                if(bank[i][j]=='1'){
+                    currentcount++;
+                }
+            }
+            result +=(previous*currentcount);
+            if(currentcount>0){
+                previous = currentcount;
+            }
+        }
+        return result;
+    }
+};
