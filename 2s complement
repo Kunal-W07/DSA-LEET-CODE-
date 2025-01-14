@@ -1,0 +1,41 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> complement(vector<int> arr1){
+    int n = arr1.size();
+    //step 1 flip values 0 to 1, 1 to 0 and store in new array
+    vector<int> arr2(n+1,0);
+    
+    for(int i= n-1, k = arr2.size()-1; i>=0; i--,k--){
+        arr2[k] = arr1[i] == 0 ? 1 : 0;
+        //flip array bits
+    }
+    //step 2 2s complement
+    int carry =1;
+    for(int i =arr2.size()-1; i>=0; i-- ){
+        int sum = arr2[i] + carry;
+        arr2[i] = sum % 2;
+        carry = sum /2;
+    }
+    if(carry){
+        arr2[0] = carry;
+    }
+    
+    return arr2;
+}
+
+
+int main() {
+    // Write C++ code here
+    
+    vector<int> arr1 ={1,0,1,1,0};
+    vector<int> ans = complement(arr1);
+    for(int i=0; i<ans.size(); i++){
+        cout<<ans[i]<<" ";
+    }
+    
+
+    return 0;
+}
