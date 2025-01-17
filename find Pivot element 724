@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& arr) {
+
+         vector<int>leftsum(arr.size(),0);
+        vector<int>rightsum(arr.size(),0);
+        
+        // leftsum formula****
+        for(int i = 1; i<arr.size(); i++){
+            leftsum[i] = leftsum[i-1] + arr[i-1];
+        }
+        
+         // rightsum formula****
+         for(int i = arr.size()-2; i>=0; i--){
+            rightsum[i] = rightsum[i+1] + arr[i+1];
+        }
+        
+        for(int i=0; i<arr.size(); i++){
+            if(leftsum[i]==rightsum[i]){
+                return i;
+            }
+        }
+        return -1;
+        
+    }
+};
