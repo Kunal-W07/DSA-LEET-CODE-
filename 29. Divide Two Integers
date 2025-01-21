@@ -23,7 +23,9 @@ public:
     int divide(int dividend, int divisor) {
         // Special case: handle INT_MIN
         if (dividend == INT_MIN && divisor == -1) {
-            return INT_MAX; // Avoid overflow
+           // if divident (-2147483648)== -2147483648 
+            return INT_MAX; 
+           // it will return 2147483648
         }
 
         long long store = -1;
