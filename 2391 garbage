@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int garbageCollection(vector<string>& garbage, vector<int>& travel) {
+
+        int pickp = 0, lasthousep = 0, traveltimep = 0;
+        int pickm = 0, lasthousem = 0, traveltimem = 0;
+        int pickg = 0, lasthouseg = 0, traveltimeg = 0;
+
+        // Calculate pickup counts and last house indices
+        for (int i = 0; i < garbage.size(); i++) {
+            for (char garbagetype : garbage[i]) {
+                if (garbagetype == 'P') {
+                    pickp++;
+                    lasthousep = i;
+                }
+                if (garbagetype == 'M') {
+                    pickm++;
+                    lasthousem = i;
+                }
+                if (garbagetype == 'G') {
+                    pickg++;
+                    lasthouseg = i;
+                }
+            }
+        }
+
+        // Calculate travel times
+        for (int i = 0; i < lasthousep; i++) {
+            traveltimep += travel[i];
+        }
+        for (int i = 0; i < lasthousem; i++) {
+            traveltimem += travel[i];
+        }
+        for (int i = 0; i < lasthouseg; i++) {
+            traveltimeg += travel[i];
+        }
+
+        // Calculate total time
+        int totalpicktime = pickp + pickm + pickg;
+        int totaltraveltime = traveltimep + traveltimem + traveltimeg;
+
+        return totalpicktime + totaltraveltime;
+    }
+};
