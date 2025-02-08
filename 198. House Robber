@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int solve(vector<int>& nums, int i){
+       // base case
+       if(i>=nums.size()){
+        return 0;
+       }
+       // include call
+       int Include_ans = nums[i] + solve(nums,i+2);
+       // exclude call
+        int Exclude_ans = 0 + solve(nums,i+1);
+        return max(Include_ans,Exclude_ans);
+    }
+
+
+    int rob(vector<int>& nums) {
+      int i = 0;
+      int ans = solve(nums,i);
+      return ans;
+    }
+};
