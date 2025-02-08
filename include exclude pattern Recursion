@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void print(string str, string output, int i, vector<string> &ans){
+    // base case
+    if(i == str.length()){
+        ans.push_back(output);
+        return;
+    }
+    char ch =  str[i];
+    //include call
+    print(str,output+ch,i+1, ans);
+    //exclude call
+    print(str,output,i+1, ans);
+}
+
+
+int main() {
+    // Write C++ code here
+    string str = "abc";
+    string output = "";
+    int i = 0;
+    vector<string> ans;
+    print(str,output,i,ans);
+    
+    for(auto i : ans){
+        cout<<i<<" ";
+    }
+
+    return 0;
+}
