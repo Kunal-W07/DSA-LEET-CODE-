@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int beautySum(string s) {
+        int sum = 0;
+        int n = s.length();
+        unordered_map<char,int> mp;
+        for(int i=0; i<n; i++){
+            mp.clear();
+            for(int j = i; j<n; j++){
+
+                mp[s[j]]++;
+                // find max and min in iterations
+                int maxi = INT_MIN;
+                int mini = INT_MAX;
+
+                //now iterate on map
+                for(auto i : mp){
+                    maxi = max(maxi,i.second);
+                    mini = min(mini,i.second);
+                }
+                int ans = maxi - mini;
+                sum += ans;
+
+            }
+
+        }
+        return sum;
+    }
+};
