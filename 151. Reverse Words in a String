@@ -1,0 +1,33 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n =  s.size();
+        int start = 0; 
+        int end = 0;
+        reverse(s.begin(), s.end());
+        for(int i=0; i<n; i++){
+            
+            //step 1  skip spaces
+            while(i<n && s[i]==' '){
+            i++;
+            }
+
+           if (i >= n) break;
+            //step 2 move i element into a end positions
+
+            while(i<n && s[i] != ' '){
+                s[end++] = s[i++];
+            }
+            
+                
+            
+            //step 3 reverse s
+            reverse(s.begin() + start, s.begin() + end);
+
+            s[end++] = ' ';
+            start = end;
+        }
+        s.resize(end-1);
+        return s;
+    }
+};
