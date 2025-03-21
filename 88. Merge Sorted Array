@@ -1,0 +1,38 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+          vector<int> ans(m + n); // Initialize with correct size
+        int k = 0, i = 0, j = 0;
+
+        // Merge elements from both arrays in sorted order
+        while (i < m && j < n) {
+            if (nums1[i] < nums2[j]) {
+                ans[k] = nums1[i];
+                i++;
+            } else {
+                ans[k] = nums2[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements from nums1 (if any)
+        while (i < m) {
+            ans[k] = nums1[i];
+            i++;
+            k++;
+        }
+
+        // Copy remaining elements from nums2 (if any)
+        while (j < n) {
+            ans[k] = nums2[j]; // Corrected from nums1[i] to nums2[j]
+            j++;
+            k++;
+        }
+
+        Copy back to nums1
+        for (int x = 0; x < m + n; x++) {
+            nums1[x] = ans[x];
+        }
+    }
+};
