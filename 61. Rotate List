@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int getlen(ListNode* head){
+        int n = 0;
+        ListNode* temp = head;
+        while(temp){
+            n++;
+            temp = temp->next;
+        }
+        return n;
+    }
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (!head || !head->next || k == 0) return head;
+
+        int len = getlen(head);
+        if (len == 0) return head; // extra safety
+
+        int index = k % len;
+        if (index == 0) return head;
+
+        int lastnodepos = len - index - 1;
+        ListNode* lastpos = head;
+
+        for (int i = 0; i < lastnodepos; i++) {
+            lastpos = lastpos->next;
+        }
+
+        ListNode* newhead = lastpos->next;
+        lastpos->next = nullptr;
+
+        // Go to the end of newhead list
+        ListNode* temp = newhead;
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = head;
+
+        return newhead;
+    }
+};
