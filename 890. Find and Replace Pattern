@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string patterncode(string pattern){
+        unordered_map<char,int>mapp;
+        int index = 0;
+        string code= "";
+
+        for(char ch : pattern){
+            if(mapp.find(ch) == mapp.end()){
+                mapp[ch] = index++;
+            }
+            code += to_string(mapp[ch]) +" ";
+        }
+        return code;
+    }
+
+    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+       vector<string> ans; 
+       string code = patterncode(pattern);
+
+       for(string i : words){
+          if(patterncode(i) == code ){
+            ans.push_back(i);
+          }
+       }
+       return ans;
+    }
+};
