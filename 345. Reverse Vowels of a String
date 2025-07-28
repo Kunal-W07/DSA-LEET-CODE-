@@ -1,6 +1,9 @@
 class Solution {
 public:
     bool isvowel(char ch){
+        //  if(ch >= 'A' && ch <= 'Z'){
+        //     ch = ch - 'A' + 'a'; // Correct conversion to lowercase
+        // }
         ch = tolower(ch);
         if(ch=='a'|| ch=='e'|| ch=='i'|| ch=='o'|| ch=='u'){
             return true;
