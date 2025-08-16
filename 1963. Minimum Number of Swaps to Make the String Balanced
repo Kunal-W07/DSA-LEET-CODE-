@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minSwaps(string s) {
+        stack<char> st;
+
+        for (char ch : s) {
+            if (ch == '[') {
+                st.push(ch);
+            } else { // ch == ']'
+                if (!st.empty() && st.top() == '['){
+                    st.pop();
+                } 
+                else st.push(ch);
+            }
+        }
+
+        int k = st.size();   // k = 2*t, form is "]]]...[[["
+        int t = k / 2;       // unmatched of one kind
+        return (t + 1) / 2;  // ceil(t/2)
+    }
+};
